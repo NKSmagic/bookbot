@@ -15,13 +15,18 @@ def main():
         print("Usage: python3 main.py <path_to_book>")
         sys.exit(1)
     else:
+        print("============ BOOKBOT ============")
         file_path = sys.argv[1]
+        print(f"Analyzing book found at {file_path}...")
+        print("----------- Word Count ----------")
         book = get_book_text(file_path)
         word_count = number_of_words(book)
         print(f"Found {word_count} total words")
+        print("--------- Character Count -------")
         char_count = number_of_characters(book)
         sorted_dic = sorted_dictionary(char_count)
         for entry in sorted_dic:
             print(f"{entry["character"]}: {entry["count"]}")
+        print("============= END ===============")
 
 main()

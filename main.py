@@ -10,13 +10,18 @@ def get_book_text(bookpath):
     return file_contents
 
 def main():
-    book = get_book_text("books/frankenstein.txt")
-    word_count = number_of_words(book)
-    print(f"Found {word_count} total words")
-    char_count = number_of_characters(book)
-    # print(char_count)
-    sorted_dic = sorted_dictionary(char_count)
-    for entry in sorted_dic:
-        print(f"{entry["character"]}: {entry["count"]}")
+    print(sys.argv)
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        file_path = sys.argv[1]
+        book = get_book_text(file_path)
+        word_count = number_of_words(book)
+        print(f"Found {word_count} total words")
+        char_count = number_of_characters(book)
+        sorted_dic = sorted_dictionary(char_count)
+        for entry in sorted_dic:
+            print(f"{entry["character"]}: {entry["count"]}")
 
 main()
